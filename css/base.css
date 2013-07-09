@@ -1,0 +1,100 @@
+/* Inlineblock transition fix + paul irish */
+* {
+    -moz-backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;    
+    backface-visibility:hidden;    
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;    
+}
+
+/* Set up (customize) carousel */
+.carousel {
+    background: rgba(0,0,0, .7);
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* Set navigation */
+.carousel .back,
+.carousel .forward {
+    -webkit-border-radius: 17px;
+    -moz-border-radius: 17px;
+    border-radius: 17px;
+    -webkit-box-shadow: inset 0 0 0 0 #043C6B;
+    -moz-box-shadow: inset 0 0 0 0 #043C6B;
+    box-shadow: 0 0 2px 1px #000;
+    background: rgba(0,0,0, .2);
+    margin: -17px 0 0 0;
+    top: 50%;
+    font-size: 0;
+    -webkit-transition: background 0.2s;
+    -moz-transition: background 0.2s;
+    transition: background 0.2s;
+}
+
+.carousel .back:hover,
+.carousel .forward:hover {
+    background: rgba(0,0,0, .5);
+}
+
+/* Carousel animation helpers */
+.carousel-item .pre-helper,
+.carousel-item .post-helper {
+    background: #282828;
+    -webkit-box-shadow: 0 0 5px 0 #000;
+    -moz-box-shadow: 0 0 5px 0 #000;
+    box-shadow: 0 0 5px 0 #000;
+}
+
+/* The wrapper :) */
+#demo1 {
+    margin: 0 auto;
+    margin-top: 10px;
+    height: 300px;
+    width: 50%;
+    box-shadow: 0 0 5px 2px #000;
+}
+
+/* Set content */
+.carousel-content {
+    background: -webkit-radial-gradient(black 15%, transparent 16%) 0 0,
+         -webkit-radial-gradient(black 15%, transparent 16%) 8px 8px,
+         -webkit-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+         -webkit-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+    background: -moz-radial-gradient(black 15%, transparent 16%) 0 0,
+        -moz-radial-gradient(black 15%, transparent 16%) 8px 8px,
+        -moz-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+        -moz-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+    background:
+        radial-gradient(black 15%, transparent 16%) 0 0,
+        radial-gradient(black 15%, transparent 16%) 8px 8px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+    background-color:#282828;
+    background-size:16px 16px;
+    -webkit-box-shadow: inset 0 0 5px 0 #000;
+    -moz-box-shadow: inset 0 0 5px 0 #000;
+    box-shadow: inset 0 0 5px 0 #000;
+    color: rgba(255, 255, 255, .9);
+}
+
+.carousel-content h1 {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 35px;
+}
+.carousel-content ul {
+    margin: 0 40px;
+    list-style-type: disc;
+    font-size: 18px;
+}
+.carousel-content li {
+    margin: 10px 0;
+}
+
+.starter-content h1 {
+    line-height:230px;
+    text-align: center;
+    font-size: 50px;
+}

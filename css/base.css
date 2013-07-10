@@ -16,8 +16,8 @@
 }
 
 /* Set navigation */
-.carousel .back,
-.carousel .forward {
+.carousel .carousel-back,
+.carousel .carousel-forward {
     -webkit-border-radius: 17px;
     -moz-border-radius: 17px;
     border-radius: 17px;
@@ -33,9 +33,28 @@
     transition: background 0.2s;
 }
 
-.carousel .back:hover,
-.carousel .forward:hover {
+.carousel .carousel-back:hover,
+.carousel .carousel-forward:hover {
     background: rgba(0,0,0, .5);
+}
+
+/* Carousel status */
+.carousel-status {
+    background: #fff;
+    background: -webkit-linear-gradient(left, rgba(255,255,255, 0), rgba(255,255,255, .8), rgba(255,255,255, 0));    
+    background: -moz-linear-gradient(left, rgba(255,255,255, 0), rgba(255,255,255, .8), rgba(255,255,255, 0));    
+    background: linear-gradient(left, rgba(255,255,255, 0), rgba(255,255,255, .8), rgba(255,255,255, 0));    
+    height: 10px;
+    position: absolute;
+    -webkit-transition: width 0.5s;
+    -moz-transition: width 0.5s;
+    transition: width 0.5s;
+}
+.carousel-status-top {
+    top: 0;
+}
+.carousel-status-bottom {
+    bottom: 0;
 }
 
 /* Carousel animation helpers */
@@ -49,11 +68,11 @@
 
 /* The wrapper :) */
 #demo1 {
+    border: 5px solid #000;
     margin: 0 auto;
     margin-top: 10px;
     height: 300px;
-    width: 50%;
-    box-shadow: 0 0 5px 2px #000;
+    width: 90%;
 }
 
 /* Set content */
@@ -77,6 +96,7 @@
     -moz-box-shadow: inset 0 0 5px 0 #000;
     box-shadow: inset 0 0 5px 0 #000;
     color: rgba(255, 255, 255, .9);
+    overflow-y: auto;
 }
 
 .carousel-content h1 {

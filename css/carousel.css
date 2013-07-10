@@ -29,18 +29,18 @@
     -moz-transition-timing-function: linear;
     transition-timing-function: linear;
 }
-.carousel .back,
-.carousel .forward {
+.carousel .carousel-back,
+.carousel .carousel-forward {
     height: 34px;
     width: 34px;
     position: absolute;
     outline: none;
     z-index: 1;
 }
-.carousel .back {
+.carousel .carousel-back {
     left: 9px;
 }
-.carousel .forward {
+.carousel .carousel-forward {
     right: 9px;
 }
 
@@ -55,6 +55,9 @@
     transform-origin: top;
     z-index: -1;
     width: 100%;
+}
+.carousel-item:first-child {
+    z-index: 1;
 }
 .carousel-item a,
 .carousel-item img {

@@ -26,13 +26,13 @@
                     $pointer,
                     forward;
 
-                if($control.hasClass('back')) {
+                    if($control.hasClass('carousel-back')) {
                         $pointer = $active.prev('.carousel-item');
                         if(!$pointer.length) {
                             $pointer = $active.siblings(':last-child');
                         }
                         forward = false;
-                    } else if($control.hasClass('forward')) {
+                    } else if($control.hasClass('carousel-forward')) {
                         $pointer = $active.next('.carousel-item');
                         if(!$pointer.length) {
                             $pointer = $active.siblings(':first-child');
@@ -42,7 +42,7 @@
 
                     /* Fallback */
                     if(!Modernizr.csstransforms3d) {
-                        classSetter.call(this, $active, $pointer, forward);
+                        setClass.call(this, $active, $pointer, forward);                        
                         return false;
                     }
 
@@ -55,7 +55,7 @@
                     /* Animate stages */
                     animate.call(this, 0, forward);
                     setTimeout($.proxy(function() {
-                        classSetter.call(this, $active, $pointer, forward);
+                        setClass.call(this, $active, $pointer, forward);
                         animate.call(this, 1, forward);
                         if(forward) {
                             $carousel.addClass('animate-forward');
@@ -64,8 +64,13 @@
                         }
                     }, this), this.options.duration / 3 * 1000);
                 },
+                /* Current status */
+                setStatus = function($active) {
+                    var currentPercent = 100 * (($active.parent().children().index($active) + 1) / $active.parent().children().length);
+                    this.$status.css('width', currentPercent + '%');
+                },
                 /* Set prev active and next items */
-                classSetter = function($prevPointer, $pointer, forward) {
+                setClass = function($prevPointer, $pointer, forward) {
                     $(this).find('.carousel-item').removeClass('previous next');
 
                     $prevPointer.removeClass('active');
@@ -80,6 +85,8 @@
                     if($pointer.filter(':last-child').length) {
                         $pointer.siblings(':first').addClass('next');
                     }
+
+                    setStatus.call(this, $pointer);
                 },
                 /**
                  * Css and pointer setter
@@ -273,14 +280,15 @@
 
                 /* Init */
                 this.$carouselWrapper = $(this).children('ul');
-                this.$controls = $(this).find('.back, .forward');
+                this.$controls = $(this).find('.carousel-back, .carousel-forward');
+                this.$status = $(this).find('.carousel-status');
                 this.mainHeight = $(this).find('.carousel-content:first').height();
 
                 this.currentDeg = -90;
                 this.cubeMatrix = new CubeMatrix(this);
 
                 /* Set first item's classes*/
-                classSetter.call(this, $(''), $(this).find('.carousel-item:first'), true);
+                setClass.call(this, $(''), $(this).find('.carousel-item:first'), true);
             
             if(Modernizr.csstransforms3d) {                
                 $(this).css(Modernizr.prefixed('perspective'), this.mainHeight);
